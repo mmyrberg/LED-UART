@@ -7,10 +7,10 @@ void Led_ctor(Led_Type *const me, LedColor_Type _color, LedState_Type _state) {
     me->color  = _color;
     me->state  = _state; 
 
-    //Aktiverar klockan för GPIO-porten som LED-lampan är ansluten till
+    //Aktiverar klockan för GPIO-porten som LED-lampan är ansluten till.
     RCC->AHB1ENR |= LED_PORT_CLOCK;  
 
-    //Switch-sats för att konfiguera LED-pinsen beroende på deras färg och status
+    //Switch-sats för att konfiguera LED-pinsen beroende på deras färg och status.
     switch(_color){
         case RED: //Om färgen är röd...
             LED_PORT->MODER |= LED_RED_MODE_BIT; //...ställ in moder-registret med LED_RED_MODE_BIT för att enbart den bit som representerar den röda LED-pinsen blir konfiguerad som en utgångsport (output). 
