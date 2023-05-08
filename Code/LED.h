@@ -12,7 +12,7 @@
 #define LED_PORT_CLOCK (1U<<1)
 
 //Definiera bitpositionerna för de GPIO-pins som är kopplade till LED-lamporna på mikrokontrollern.
-#define LED_RED_PIN	(1U<<14) //Definiera den 14:e biten i registeradressen för att styra röda LED-lampan (dvs. den 14:e biten är satt till 1 och alla andra bitar är satta till 0). Samma princip på övriga nedan. 
+#define LED_RED_PIN (1U<<14) //Definiera den 14:e biten i registeradressen för att styra röda LED-lampan (dvs. den 14:e biten är satt till 1 och alla andra bitar är satta till 0). Samma princip på övriga nedan. 
 #define LED_GREEN_PIN (1U<<12)
 #define	LED_BLUE_PIN (1U<<15)
 #define LED_YELLOW_PIN (1U<<13)
@@ -43,9 +43,9 @@ typedef struct { //Innehåller två medlemmar som representerar färgen och stat
     LedState_Type state;  
 }Led_Type; //Ges namnet Led_Type som blir en egen datatyp för variabler som kan lagra info om färg och status för en LED-lampa.
 
-//Deklarera funktionerna för LED-konstruktorn, statusangivelse och statuskontroll 
+//Deklarera funktionerna för LED-konstruktorn, statusangivelse och statuskontroll. 
 void Led_ctor(Led_Type *const me, LedColor_Type _color, LedState_Type _state); //Konstruktorn. Skapar en ny instans av structen Led_Type och sätter dess initiala värden, t.ex. att den ska vara röd och påslagen.
-void Led_setState(Led_Type *const me, LedState_Type _state); //Uppdaterar LED-lampans status
-LedState_Type Led_getState(Led_Type *const me); //Hämtar LED-lampans nuvarande status
+void Led_setState(Led_Type *const me, LedState_Type _state); //Uppdaterar LED-lampans status.
+LedState_Type Led_getState(Led_Type *const me); //Hämtar LED-lampans nuvarande status.
 
-#endif //Anger att headerfilen avslutas
+#endif //Anger att headerfilen avslutas.
