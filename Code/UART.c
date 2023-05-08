@@ -14,7 +14,7 @@ void USART2_Init(void) {
     GPIOA->AFR[0] |= 0x7700; //Sätter bitarna 8-11 samt 12-14 till formatet 0111 för att välja alternativ funktion till UART på pins PA2 och PA3.
     /*Nu är pin 2 och 3 redo för att skicka och ta emot UART-kommunikation*/
 
-    //Konfiguration av UART
+    //Konfiguration av UART.
     USART2->BRR = 0x0683; //Sätter en standard baud-rate till 9600bps genom att skriva hexavärdet 0x0683 till BRR-registret.
     USART2->CR1 = 0x000C; //Sätter transmit (tx) och receive (rx) till att arbeta i 8 bitars data (8 bitars data, 1 stop bit, ingen paritet).
     USART2->CR2 = 0x000; //Nollställer USART2:s CR2-register.
