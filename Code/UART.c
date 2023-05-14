@@ -2,12 +2,12 @@
 
 //Definiera funktion för att initiera USART-protokollet och dess beståndsdelar. Denna funktion utgör en drivrutin.
 void USART2_Init(void) { 
-    // 1. Aktivera klocktillgång för UART2. APB1ENR är ett register inom RCC (systemklockan) som används för att aktivera eller inaktivera klockan. 
-    RCC->APB1ENR |= 0x20000; //Aktiverar klockan för UART2 genom att sätta bit 17 i APB1ENR till 1. Om man bara sätter "=" finns risk att förkonfiguarade bitar skrivs över, därför använder vi "|=".
+    // 1. Aktivera klocktillgång för USART2. APB1ENR är ett register inom RCC (systemklockan) som används för att aktivera eller inaktivera klockan. 
+    RCC->APB1ENR |= 0x20000; //Aktiverar klockan för USART2 genom att sätta bit 17 i APB1ENR till 1. Om man bara sätter "=" finns risk att förkonfiguarade bitar skrivs över, därför använder vi "|=".
     // 2. Aktivera klocktillgång för port A.
     RCC->AHB1ENR |= 0x01; //Aktiverar klockan för GPIO-port A genom att sätta bit 0 i RCC's AHB1ENR-register till 1.
     // 3. Aktivera pins relaterade till vald port, för alternativ funktion, vilket ger GPIO-pinsen möjlighet att användas för andra syften än enkel in- och utdata (I/O), som t.ex. kommunikation med UART-protokollet.
-    GPIOA->MODER &= ~0x00F0; //Rensar bitarna 4-7 i GPIO-port A:s MODER-register för att förbereda pins PA2 och PA3 ifall dessa är i andra lägen. "&" samt "~" forcerar en invertering som leder till att bitarna som via hex betecknas med 1, i realvärde ersätts med 0.
+    GPIOA->MODER &= ~0x00F0; //Rensar bitarna 4-7 i GPIO-port A:s MODER-register för att förbereda pins PA2 och PA3 ifall dessa är i andra lägen. "&" samt "~" forcerar en invertering som leder till att bitarna som via hex betecknas med 1, ersätts med 0.
     GPIOA->MODER |= 0x00A0; //Sätter bitarna 5 och 7 i GPIO-port A:s MODER-register till 1 för att aktivera alternativ funtionalitet på pins PA2 och PA3.
     // 4. Välj typen av alternativ funktion för de valda pinsen. Hakperenteserna syftar till att välja början av AFR-registret LOW/HIGH.
     GPIOA->AFR[0] &= ~0xFF00; //Rensar bitarna 8-15 för att förbereda pins PA2 och PA3 för alternativ funktion.
@@ -33,7 +33,7 @@ int USART2_write(int ch) { //Deklarerar skrivfunktionen (överföring av data ti
     return ch; //Returnera det överförda värdet. 
 }
 
-//Uart read-regler.
+//UART read-regler.
 int USART2_read(void) { //Deklarerar läsfunktionen (mottagning av information).
     while(!(USART2->SR & 0x0020)){} //Sätter ett krav som kontrollerar om det finns data att läsa/hämta.
     
@@ -71,7 +71,7 @@ int fputc(int c, FILE *f) { //fputc skriver en byte till standardströmmen.
 int n; //Deklarerar en byte för användning i testfunktionen.
 char str[80]; //Sätter en begränsning av antal karaktärer i överföringen.
 
-//Funktion som testar läs- och skrivfunktionen.
+//Funktion som testar läs- och skrivfunktionen. Obs, används för närvarande inte i main men finns tillgänglig vid behov för att testa kommunikationen.
 void test_setup(void) {
     printf("please enter a number: ");
     scanf("%d", &n);
