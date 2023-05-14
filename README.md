@@ -23,14 +23,14 @@ För att använda denna UART-drivrutin krävs följande:
 1. Ladda ner källkoden som en ZIP-fil eller klona projektet från github
 2. Importera projektet i din IDE och lägg till nödvändiga Hardware Abstraction Layer (HAL)
 3. Inkludera headerfilen uart.h till din programvara
-4. Gå till filen UART.c och anpassa UART-inställningarna för att passa dina behov genom att ändra önskade konfigurationsparametrar i funktinen USART2_Init().
+4. Gå till filen UART.c och anpassa UART-inställningarna för att passa dina behov genom att ändra önskade konfigurationsparametrar i funktionen USART2_Init()
 5. Anropa funktionerna från din applikation
 
 ### Användning
 De funktioner som är tillgängliga för att använda UART-drivrutinen inkluderar:
-* `USART2_Init`: Använd för att initiera USART-protokollet och dess beståndsdelar (se exempel nedan). 
+* `USART2_Init`: Använd för att initiera USART-protokollet och dess beståndsdelar (se exempel nedan) 
 * `USART2_write`: Använd för att skriva och sända data med hjälp av UART-gränssnittet
-* `USART2_read`: Använd för att läsa och ta emot data med hjälp av UART-gränssnittet.
+* `USART2_read`: Använd för att läsa och ta emot data med hjälp av UART-gränssnittet
 
 #### Exempelkod (C):
 ```
