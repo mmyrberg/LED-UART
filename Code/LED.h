@@ -8,7 +8,7 @@
 //Definiera vilken GPIO som skall vara ansvarig för LED-funktionen. Alla gånger headern inkluderas och LED_PORT skrivs så är detta synonymt med GPIOB.
 #define LED_PORT GPIOB
 
-//Definiera klocksignalen för porten. vänsterskiftar LED_PORT_CLOCK från 1 (00000001) till 2 (00000010). Detta motsvarar den bit som styr klocksignalen.
+//Definiera klocksignalen för porten. Vänsterskiftar LED_PORT_CLOCK från 1 (00000001) till 2 (00000010). Detta motsvarar den bit som styr klocksignalen.
 #define LED_PORT_CLOCK (1U<<1)
 
 //Definiera bitpositionerna för de GPIO-pins som är kopplade till LED-lamporna på mikrokontrollern.
